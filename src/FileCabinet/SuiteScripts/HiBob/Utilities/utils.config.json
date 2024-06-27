@@ -1,0 +1,7 @@
+{
+  "packages": [
+  ],
+  "paths": {
+    "Server": "SuiteScripts/HiBob/Utilities/HB CM Server Utilities.js"
+  }
+}

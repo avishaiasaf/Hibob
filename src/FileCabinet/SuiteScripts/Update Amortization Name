@@ -1,0 +1,117 @@
+/**
+ * @NApiVersion 2.x
+ * @NScriptType ScheduledScript
+ * @NModuleScope SameAccount
+ */
+ define(['N/search','N/file', 'N/runtime', 'N/format','N/record', 'N/task','N/currency'], function(search,file, runtime,format, record, task,currency) {
+    var exports = {};
+
+    function execute(context) {
+        var header = false
+        var Data = []
+        var CSV = file.load({id: 556599});
+        var iterator = CSV.lines.iterator();
+        var script = runtime.getCurrentScript();
+        var last_row = script.getParameter({ name: "custscript_csv_last_row" });
+        log.debug({
+            title: 'lastrow',
+            details: last_row
+        })
+        if (isNullOrEmpty(last_row)){
+            last_row = 0
+        }
+
+        iterator.each(function (line){
+            var linevalue = line.value.split(',')
+            if (!header){
+                header = true
+            }
+            else{
+                //Data.push(linevalue)
+               
+                Data.push(linevalue)
+                             
+            }
+            return true
+        })
+      
+
+        
+        
+        for (var i = last_row; i < Data.length;i++){
+            try{
+            var Rec_Rec = record.load({
+                type: 'revRecSchedule',
+                id: Data[i][0],
+                isDynamic: true,
+                })
+                var Name_Rec = Rec_Rec.getValue('name')
+                Rec_Rec.setValue('name',Name_Rec+"-SRR_Imp")
+            var Rec =    Rec_Rec.save();
+            log.debug({
+                title: 'Rec Save: ' + i,
+                details: Rec
+            })
+            
+                if (GetUsage()< 100){
+                    Reschedule(i)
+                }
+
+                
+
+
+                
+
+             
+                }catch(e){log.debug({
+                                title: 'Error: '+ i,
+                                details: e
+                                })
+            }
+        }
+       
+
+    }
+    function isNullOrEmpty(val) {
+
+    if (typeof (val) == 'undefined' || val == null || (typeof (val) == 'string' && val.length == 0)) {
+        return true;
+    }
+    return false;
+    }
+
+    function FormatDate(date)
+    {
+       var rawDateString = date;
+       var parsedDate= format.parse({
+           value: rawDateString,
+           type: format.Type.DATE
+    });
+       return parsedDate
+    }
+    
+    function Reschedule(lastrow) {
+        var Task_ID = runtime.getCurrentScript().id;
+        var Task_Deployment = runtime.getCurrentScript().deploymentId;
+
+        var scriptTask = task.create({taskType: task.TaskType.SCHEDULED_SCRIPT,scriptId : Task_ID,deploymentId: Task_Deployment,params: {'custscript_csv_last_row': lastrow}})
+        //scriptTask.scriptId = runtime.getCurrentScript().id;
+        //scriptTask.deploymentId = runtime.getCurrentScript().deploymentId;
+        scriptTask.submit();
+    }
+
+    
+
+    function GetUsage(){
+        var scriptObj = runtime.getCurrentScript();
+        var remainingUsage = scriptObj.getRemainingUsage();
+        return remainingUsage
+    }
+              
+    exports.execute = execute;
+    return exports;
+
+
+}
+);
+   

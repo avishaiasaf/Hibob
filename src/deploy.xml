@@ -1,0 +1,43 @@
+<deploy>
+<!--    <configuration>-->
+<!--        <path>~/AccountConfiguration/*</path>-->
+<!--    </configuration>-->
+<!--    <files>-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/Access Token Handler/HB SL Access Token Handler.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Utilities/HB CM Enums.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Utilities/HB CM Reporting Enums.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Utilities/HB CM Server Utilities.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/Query Tool/HB CM SuiteQL Utils.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/Query Tool/HB CS Saved SuiteQL.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/Query Tool/HB MR Delete Outdated Saved Results.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/Query Tool/HB MR Run Scheduled SuiteQL.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/Query Tool/HB SL Saved SuiteQL.js</path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path>~/FileCabinet/SuiteScripts/HiBob/Solutions/SSP/HB MR Create Revenue Allocation Calcs.js</path>&ndash;&gt;-->
+<!--    </files>-->
+    <objects>
+<!--        <path>~/Objects/customrecord_hb_script_dashboard.xml</path>-->
+<!--        <path>~/Objects/customscript_hb_delete_outdated_results.xml</path>-->
+<!--        <path>~/Objects/customscript_hb_run_scheduled_suiteql.xml</path>-->
+<!--        <path>~/Objects/customrecordzab_subscription_item.xml</path>-->
+<!--        <path>~/Objects/customrecordzab_subscription.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_rev_alloc_map.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_rev_alloc_calc.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_rev_alloc_line.xml</path>-->
+<!--        <path>~/Objects/customsearch_hb_create_rev_alloc_calc.xml</path>-->
+<!--        <path>~/Objects/customscript_hb_create_rev_calcs.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_saved_suiteql_edit.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_saved_suiteql_field.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_saved_query_results.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_ssql_formula.xml</path>-->
+<!--        <path>~/Objects/customrecord_hb_ssql_filter.xml</path>-->
+<!--        <path>~/Objects/customsearch_hb_ssql_run_queue.xml</path>-->
+<!--        <path>~/Objects/customsearch_hb_ssql_run_queue_2.xml</path>-->
+
+        <path>~/Objects/customsearch4256.xml</path>
+<!--        <path>~/Objects/customsearch4238.xml</path>-->
+<!--        <path>~/Objects/customsearch4258.xml</path>-->
+    </objects>
+<!--    <translationimports>-->
+<!--        <path>~/Translations/*</path>-->
+<!--    </translationimports>-->
+</deploy>

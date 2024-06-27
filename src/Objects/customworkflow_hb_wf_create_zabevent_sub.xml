@@ -1,0 +1,223 @@
+<workflow scriptid="customworkflow_hb_wf_create_zabevent_sub">
+  <description>This workflow creates ZAB Revenue Events based on Sub Item values populated via SF integration.</description>
+  <initcontexts>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</initcontexts>
+  <initeventtypes>EDIT</initeventtypes>
+  <initlocalizationcontext></initlocalizationcontext>
+  <initoncreate>F</initoncreate>
+  <initonvieworupdate>T</initonvieworupdate>
+  <initsavedsearchcondition></initsavedsearchcondition>
+  <inittriggertype>AFTERSUBMIT</inittriggertype>
+  <isinactive>F</isinactive>
+  <islogenabled>T</islogenabled>
+  <keephistory>ALWAYS</keephistory>
+  <name>Create ZAB Revenue Event (Sub)</name>
+  <recordtypes>[scriptid=customrecordzab_subscription_item]</recordtypes>
+  <releasestatus>RELEASED</releasestatus>
+  <runasadmin>T</runasadmin>
+  <initcondition>
+    <formula><![CDATA[isEmpty("Percent Completion") = 'F' AND "Item:Revenue Recognition Rule" IN ("Revenue Recognition Rule1","Revenue Recognition Rule2")]]></formula>
+    <type>VISUAL_BUILDER</type>
+    <parameters>
+      <parameter>
+        <name>Percent Completion</name>
+        <value>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_percent_completion]</value>
+      </parameter>
+      <parameter>
+        <name>Item:Revenue Recognition Rule</name>
+        <value>[scriptid=customrecordzab_subscription_item.custrecordzab_si_item]:STDITEMREVENUERECOGNITIONRULE</value>
+      </parameter>
+      <parameter>
+        <name>Revenue Recognition Rule1</name>
+        <selectrecordtype>-357</selectrecordtype>
+        <value>[ACCOUNT_SPECIFIC_VALUE]</value>
+      </parameter>
+      <parameter>
+        <name>Revenue Recognition Rule2</name>
+        <selectrecordtype>-357</selectrecordtype>
+        <value>[ACCOUNT_SPECIFIC_VALUE]</value>
+      </parameter>
+    </parameters>
+  </initcondition>
+  <workflowcustomfields>
+    <workflowcustomfield scriptid="custworkflow4">
+      <applyformatting>F</applyformatting>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displaytype>NORMAL</displaytype>
+      <dynamicdefault></dynamicdefault>
+      <fieldtype>SELECT</fieldtype>
+      <help></help>
+      <label>ZAB Revenue Detail</label>
+      <linktext></linktext>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <selectrecordtype>[scriptid=customrecordzab_revenue_detail]</selectrecordtype>
+      <storevalue>T</storevalue>
+      <customfieldfilters>
+        <customfieldfilter>
+          <fldcomparefield></fldcomparefield>
+          <fldfilter>[scriptid=customrecordzab_revenue_detail.custrecordzab_rd_rev_event_type]</fldfilter>
+          <fldfilterchecked></fldfilterchecked>
+          <fldfiltercomparetype>EQ</fldfiltercomparetype>
+          <fldfilternotnull>F</fldfilternotnull>
+          <fldfilternull>F</fldfilternull>
+          <fldfiltersel>[scriptid=customlistzab_rev_rec_event_types.val_131883_t1928867_691]</fldfiltersel>
+          <fldfilterval></fldfilterval>
+        </customfieldfilter>
+        <customfieldfilter>
+          <fldcomparefield>[scriptid=customworkflow14.custworkflow2]</fldcomparefield>
+          <fldfilter>[scriptid=customrecordzab_revenue_detail.custrecordzab_rd_created_from_rev_detail]</fldfilter>
+          <fldfilterchecked></fldfilterchecked>
+          <fldfiltercomparetype>EQ</fldfiltercomparetype>
+          <fldfilternotnull>F</fldfilternotnull>
+          <fldfilternull>F</fldfilternull>
+          <fldfiltersel></fldfiltersel>
+          <fldfilterval></fldfilterval>
+        </customfieldfilter>
+      </customfieldfilters>
+    </workflowcustomfield>
+    <workflowcustomfield scriptid="custworkflow5">
+      <applyformatting>T</applyformatting>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displaytype>NORMAL</displaytype>
+      <dynamicdefault></dynamicdefault>
+      <fieldtype>PERCENT</fieldtype>
+      <help></help>
+      <label>Percent Complete</label>
+      <linktext></linktext>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <selectrecordtype></selectrecordtype>
+      <storevalue>T</storevalue>
+    </workflowcustomfield>
+    <workflowcustomfield scriptid="custworkflow6">
+      <applyformatting>F</applyformatting>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displaytype>NORMAL</displaytype>
+      <dynamicdefault></dynamicdefault>
+      <fieldtype>DATE</fieldtype>
+      <help></help>
+      <label>Event Date</label>
+      <linktext></linktext>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <selectrecordtype></selectrecordtype>
+      <storevalue>T</storevalue>
+    </workflowcustomfield>
+  </workflowcustomfields>
+  <workflowstates>
+    <workflowstate scriptid="workflowstate205">
+      <description></description>
+      <donotexitworkflow>F</donotexitworkflow>
+      <name>Create ZAB Revenue Event</name>
+      <positionx>443</positionx>
+      <positiony>193</positiony>
+      <workflowactions triggertype="ONENTRY">
+        <createrecordaction scriptid="workflowaction3412">
+          <conditionsavedsearch></conditionsavedsearch>
+          <contexttypes></contexttypes>
+          <eventtypes></eventtypes>
+          <isinactive>F</isinactive>
+          <recordtype>[scriptid=customrecordzab_revenue_event]</recordtype>
+          <resultfield></resultfield>
+          <scheduledelay></scheduledelay>
+          <schedulemode>DELAY</schedulemode>
+          <schedulerecurrence></schedulerecurrence>
+          <scheduletimeofday></scheduletimeofday>
+          <scheduletimeunit></scheduletimeunit>
+          <initcondition>
+            <formula><![CDATA["Percent Completion" != "Last Completion Percent"]]></formula>
+            <type>VISUAL_BUILDER</type>
+            <parameters>
+              <parameter>
+                <name>Percent Completion</name>
+                <value>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_percent_completion]</value>
+              </parameter>
+              <parameter>
+                <name>Last Completion Percent</name>
+                <value>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_perc_complet_reg]</value>
+              </parameter>
+            </parameters>
+          </initcondition>
+          <fieldsettings>
+            <fieldsetting>
+              <targetfield>[scriptid=customrecordzab_revenue_event.custrecordzab_rvn_cumulative_percent_cmp]</targetfield>
+              <valuechecked></valuechecked>
+              <valuedate></valuedate>
+              <valuefield>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_percent_completion]</valuefield>
+              <valueformula></valueformula>
+              <valuejoinfield></valuejoinfield>
+              <valueselect></valueselect>
+              <valuetext></valuetext>
+            </fieldsetting>
+            <fieldsetting>
+              <targetfield>[scriptid=customrecordzab_revenue_event.custrecordzab_rvn_event_date]</targetfield>
+              <valuechecked></valuechecked>
+              <valuedate></valuedate>
+              <valuefield>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_ps_revenue_event_date]</valuefield>
+              <valueformula></valueformula>
+              <valuejoinfield></valuejoinfield>
+              <valueselect></valueselect>
+              <valuetext></valuetext>
+            </fieldsetting>
+            <fieldsetting>
+              <targetfield>[scriptid=customrecordzab_revenue_event.custrecordzab_rvn_revenue_detail]</targetfield>
+              <valuechecked></valuechecked>
+              <valuedate></valuedate>
+              <valuefield>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_zab_rev_event_added]</valuefield>
+              <valueformula></valueformula>
+              <valuejoinfield></valuejoinfield>
+              <valueselect></valueselect>
+              <valuetext></valuetext>
+            </fieldsetting>
+          </fieldsettings>
+        </createrecordaction>
+      </workflowactions>
+      <workflowactions triggertype="AFTERSUBMIT">
+        <setfieldvalueaction scriptid="workflowaction3424">
+          <clienttriggerfields></clienttriggerfields>
+          <conditionsavedsearch></conditionsavedsearch>
+          <contexttypes></contexttypes>
+          <eventtypes></eventtypes>
+          <field>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_perc_complet_reg]</field>
+          <isinactive>F</isinactive>
+          <scheduledelay></scheduledelay>
+          <schedulemode>DELAY</schedulemode>
+          <schedulerecurrence></schedulerecurrence>
+          <scheduletimeofday></scheduletimeofday>
+          <scheduletimeunit></scheduletimeunit>
+          <valuechecked>F</valuechecked>
+          <valuedate></valuedate>
+          <valuefield>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_percent_completion]</valuefield>
+          <valueformula></valueformula>
+          <valuejoinfield></valuejoinfield>
+          <valueselect></valueselect>
+          <valuetext></valuetext>
+          <valuetype>FIELD</valuetype>
+          <initcondition>
+            <formula><![CDATA["Percent Completion" != "Last Completion Percent"]]></formula>
+            <type>VISUAL_BUILDER</type>
+            <parameters>
+              <parameter>
+                <name>Percent Completion</name>
+                <value>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_percent_completion]</value>
+              </parameter>
+              <parameter>
+                <name>Last Completion Percent</name>
+                <value>[scriptid=customrecordzab_subscription_item.custrecord_hb_si_perc_complet_reg]</value>
+              </parameter>
+            </parameters>
+          </initcondition>
+        </setfieldvalueaction>
+      </workflowactions>
+    </workflowstate>
+  </workflowstates>
+</workflow>

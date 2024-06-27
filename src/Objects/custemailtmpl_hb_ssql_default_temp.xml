@@ -1,0 +1,12 @@
+<emailtemplate scriptid="custemailtmpl_hb_ssql_default_temp">
+  <addcompanyaddress>T</addcompanyaddress>
+  <addunsubscribelink>T</addunsubscribelink>
+  <description></description>
+  <isinactive>F</isinactive>
+  <isprivate>F</isprivate>
+  <mediaitem></mediaitem>
+  <name>Saved Query Email Result</name>
+  <recordtype>TRANSACTION</recordtype>
+  <subject>Result for Query &lt;#if customrecord??&gt;${customrecord.custrecord_hb_ssql_parent_query.name}&lt;/#if&gt;</subject>
+  <usesmedia>F</usesmedia>
+</emailtemplate>

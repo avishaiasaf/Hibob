@@ -1,0 +1,36 @@
+<customlist scriptid="customlist_hb_field_display_type">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <name>Field Display Type</name>
+  <customvalues>
+    <customvalue scriptid="val_14386369_4672400_sb4_984">
+      <isinactive>F</isinactive>
+      <value>DISABLED</value>
+    </customvalue>
+    <customvalue scriptid="val_14386367_4672400_sb4_147">
+      <isinactive>F</isinactive>
+      <value>ENTRY</value>
+    </customvalue>
+    <customvalue scriptid="val_14386370_4672400_sb4_757">
+      <isinactive>F</isinactive>
+      <value>HIDDEN</value>
+    </customvalue>
+    <customvalue scriptid="val_14386371_4672400_sb4_464">
+      <isinactive>F</isinactive>
+      <value>INLINE</value>
+    </customvalue>
+    <customvalue scriptid="val_14386373_4672400_sb4_751">
+      <isinactive>F</isinactive>
+      <value>NODISPLAY</value>
+    </customvalue>
+    <customvalue scriptid="val_14386368_4672400_sb4_431">
+      <isinactive>F</isinactive>
+      <value>NORMAL</value>
+    </customvalue>
+    <customvalue scriptid="val_14386372_4672400_sb4_717">
+      <isinactive>F</isinactive>
+      <value>READONLY</value>
+    </customvalue>
+  </customvalues>
+</customlist>

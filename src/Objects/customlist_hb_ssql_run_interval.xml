@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_hb_ssql_run_interval">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Running Interval</name>
+  <customvalues>
+    <customvalue scriptid="val_14308851_4672400_sb4_902">
+      <isinactive>F</isinactive>
+      <value>Hours</value>
+    </customvalue>
+    <customvalue scriptid="val_14308852_4672400_sb4_738">
+      <isinactive>F</isinactive>
+      <value>Days</value>
+    </customvalue>
+    <customvalue scriptid="val_14308853_4672400_sb4_974">
+      <isinactive>F</isinactive>
+      <value>Weeks</value>
+    </customvalue>
+    <customvalue scriptid="val_14308854_4672400_sb4_817">
+      <isinactive>F</isinactive>
+      <value>Months</value>
+    </customvalue>
+  </customvalues>
+</customlist>
